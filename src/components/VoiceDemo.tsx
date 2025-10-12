@@ -88,10 +88,12 @@ export default function VoiceDemo() {
         <div className="max-w-4xl mx-auto">
           <Card className="shadow-xl border-2 border-purple-200 dark:border-purple-800">
             <CardHeader className="text-center">
-              <CardTitle className="text-3xl flex items-center justify-center space-x-3">
-                <span className="text-4xl">🎤</span>
-                <span>Voice Demo</span>
+              <CardTitle className="text-3xl font-bold mb-2">
+                Live Demo
               </CardTitle>
+              <p className="text-muted-foreground text-sm mt-2">
+                Experience real-time voice conversations powered by advanced AI!
+              </p>
               
               {/* Status Badge */}
               <div className="flex justify-center mt-4">
@@ -117,17 +119,17 @@ export default function VoiceDemo() {
                 <div className="relative inline-flex items-center justify-center">
                   <Button
                     onClick={callStatus === 'connected' ? handleEndCall : handleStartDemo}
-                    disabled={isCallStarting || callStatus === 'creating' || callStatus === 'connecting'}
+                    disabled={isCallStarting || callStatus === 'creating' || callStatus === 'connecting' || callStatus === 'ended'}
                     size="lg"
                     className={`
-                      w-24 h-24 rounded-full text-white font-bold text-2xl transition-all duration-300 shadow-lg
+                      w-24 h-24 rounded-full text-white font-bold text-2xl transition-all duration-300 shadow-lg hover:scale-105
                       ${callStatus === 'connected' 
-                        ? 'bg-red-500 hover:bg-red-600 animate-pulse shadow-red-500/30' 
+                        ? 'bg-red-500 hover:bg-red-600 shadow-red-500/30' 
                         : 'bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 shadow-purple-500/30'
                       }
-                      ${(isCallStarting || callStatus === 'creating' || callStatus === 'connecting') 
-                        ? 'cursor-not-allowed opacity-70' 
-                        : 'hover:scale-105'
+                      ${(isCallStarting || callStatus === 'creating' || callStatus === 'connecting' || callStatus === 'ended') 
+                        ? 'cursor-not-allowed opacity-70 !hover:scale-100' 
+                        : ''
                       }
                     `}
                   >
@@ -140,7 +142,7 @@ export default function VoiceDemo() {
 
                   {/* Pulsing ring for active call */}
                   {callStatus === 'connected' && (
-                    <div className="absolute inset-0 rounded-full border-4 border-red-500 animate-ping opacity-30"></div>
+                    <div className="absolute inset-0 rounded-full border-4 border-red-500 animate-ping opacity-30 pointer-events-none"></div>
                   )}
                 </div>
 
@@ -196,23 +198,20 @@ export default function VoiceDemo() {
                   {callStatus === 'connected' && (
                     <div className="text-center space-y-4">
                       <h3 className="text-xl font-semibold text-green-600">🎉 Connected to AI Agent!</h3>
-                      <p className="text-muted-foreground">
-                        You are now connected to the AI agent. Start speaking to experience our voice feedback technology.
-                      </p>
                       <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4">
                         <p className="text-sm text-blue-800 dark:text-blue-200">
                           💡 <strong>Tip:</strong> Speak naturally with the AI agent. The conversation should flow like talking to a real person.
                         </p>
                       </div>
-                      <div className="flex justify-center space-x-4 mt-6">
-                        <Button 
-                          variant="outline" 
-                          onClick={handleEndCall}
-                          className="bg-red-50 hover:bg-red-100 text-red-700 border-red-200"
-                        >
-                          End Demo Call
-                        </Button>
-                      </div>
+                    </div>
+                  )}
+
+                  {callStatus === 'ended' && (
+                    <div className="text-center space-y-4">
+                      <h3 className="text-xl font-semibold">👋 Call Ended</h3>
+                      <p className="text-muted-foreground">
+                        Thank you for trying our voice AI demo!
+                      </p>
                     </div>
                   )}
 
