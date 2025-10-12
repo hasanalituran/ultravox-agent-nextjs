@@ -85,11 +85,19 @@ export function useUltravoxCall(): UseUltravoxCallReturn {
 
   const endCall = useCallback(async () => {
     try {
+      // Immediately set status to prevent UI from being stuck
+      setCallStatus('ended');
+      
       if (uvSessionRef.current) {
         await uvSessionRef.current.leaveCall();
         uvSessionRef.current = null;
       }
-      setCallStatus('ended');
+      
+      // Reset to idle after a brief moment so user sees the "ended" state
+      setTimeout(() => {
+        setCallStatus('idle');
+        setError(null);
+      }, 1000);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to end call');
       setCallStatus('error');
