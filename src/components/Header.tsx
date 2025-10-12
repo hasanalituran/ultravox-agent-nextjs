@@ -34,6 +34,7 @@ export default function Header({ activeSection, setActiveSection, darkMode, togg
           className="flex items-center cursor-pointer"
           onClick={() => scrollToSection('hero')}
         >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/logo.png" alt="Fydback logo" className="w-10 h-10 mr-3" />
           <span className="text-2xl font-bold bg-gradient-to-r from-purple-600 via-blue-600 to-cyan-600 bg-clip-text text-transparent">
             Fydback

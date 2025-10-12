@@ -151,7 +151,7 @@ export default function VoiceDemo() {
                       <h3 className="text-2xl font-semibold">Ready to Experience Voice AI?</h3>
                       <p className="text-muted-foreground">
                         Click the microphone button to start a demo conversation with our AI agent. 
-                        You'll be asked to provide feedback about a recent experience.
+                        You&apos;ll be asked to provide feedback about a recent experience.
                       </p>
                       <div className="grid sm:grid-cols-3 gap-4 mt-6">
                         <div className="text-center p-4 rounded-lg bg-white/50 dark:bg-gray-800/50">
@@ -221,7 +221,7 @@ export default function VoiceDemo() {
                       <h3 className="text-xl font-semibold text-red-600">⚠️ Demo Temporarily Unavailable</h3>
                       <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4">
                         <p className="text-sm text-red-800 dark:text-red-200 mb-2">
-                          We've reached our daily demo limit. Please try again tomorrow or contact us for a personalized demo.
+                          We&apos;ve reached our daily demo limit. Please try again tomorrow or contact us for a personalized demo.
                         </p>
                         {/* Only show error details in development */}
                         {isDevelopment && error && (

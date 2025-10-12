@@ -70,8 +70,6 @@ ${formData.message || 'No message provided'}
       
       alert('Your email client should open with the message pre-filled.')
       
-    } catch (error) {
-      alert('Something went wrong. Please try again.')
     } finally {
       setIsSubmitting(false)
     }
@@ -84,7 +82,7 @@ ${formData.message || 'No message provided'}
             Get In Touch
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Ready to automate interviews, research, and feedback collection? We're here to help you get started.
+            Ready to automate interviews, research, and feedback collection? We&apos;re here to help you get started.
           </p>
         </div>
 
@@ -94,7 +92,7 @@ ${formData.message || 'No message provided'}
             <CardHeader className="text-center">
               <CardTitle className="text-3xl">Get Started Today</CardTitle>
               <p className="text-muted-foreground">
-                Contact us to learn more about Fydback's AI-powered voice feedback platform
+                Contact us to learn more about Fydback&apos;s AI-powered voice feedback platform
               </p>
             </CardHeader>
             <CardContent className="space-y-6">
@@ -165,7 +163,7 @@ ${formData.message || 'No message provided'}
               </form>
               
               <p className="text-xs text-muted-foreground text-center">
-                We'll never spam you. Unsubscribe at any time.
+                We&apos;ll never spam you. Unsubscribe at any time.
               </p>
             </CardContent>
           </Card>

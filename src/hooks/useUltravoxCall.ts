@@ -46,7 +46,7 @@ export function useUltravoxCall(): UseUltravoxCallReturn {
           }
         });
 
-        uvSessionRef.current.addEventListener('error', (event: any) => {
+        uvSessionRef.current.addEventListener('error', (event: Event) => {
           console.error('Session error:', event);
           setError('Connection error occurred');
           setCallStatus('error');
