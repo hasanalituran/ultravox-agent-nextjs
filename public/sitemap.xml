@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://fydback.com.au/</loc>
+    <lastmod>2025-10-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://fydback.com.au/logo.png</image:loc>
+      <image:title>Fydback Logo</image:title>
+      <image:caption>Fydback - Voice AI Agents for Interviews, Feedback &amp; Intelligence</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://fydback.com.au/favicon.ico</image:loc>
+      <image:title>Fydback Favicon</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://fydback.com.au/logo-48.png</image:loc>
+      <image:title>Fydback Logo 48px</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://fydback.com.au/icon-192.png</image:loc>
+      <image:title>Fydback Icon 192px</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://fydback.com.au/apple-touch-icon.png</image:loc>
+      <image:title>Fydback Apple Touch Icon</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://fydback.com.au/#how-it-works</loc>
+    <lastmod>2025-10-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://fydback.com.au/#features</loc>
+    <lastmod>2025-10-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://fydback.com.au/#voice-demo</loc>
+    <lastmod>2025-10-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fydback.com.au/#contact</loc>
+    <lastmod>2025-10-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+</urlset>
