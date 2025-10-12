@@ -20,7 +20,7 @@ export class UltravoxService {
       console.log('Checking agent capacity via Ultravox API proxy...');
       
       // First, check if the agent is active
-      const agentResponse = await fetch(`/api/ultravox/agents/${AGENT_ID}`, {
+      const agentResponse = await fetch(`/api/agents/${AGENT_ID}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -36,7 +36,7 @@ export class UltravoxService {
       }
 
       // Now fetch the call history to check daily limit
-      const callsResponse = await fetch(`/api/ultravox/agents/${AGENT_ID}/calls`, {
+      const callsResponse = await fetch(`/api/agents/${AGENT_ID}/calls`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -100,7 +100,7 @@ export class UltravoxService {
       };
       
       console.log('Attempting to call Ultravox API via proxy...');
-      const response = await fetch(`/api/ultravox/agents/${AGENT_ID}/calls`, {
+      const response = await fetch(`/api/agents/${AGENT_ID}/calls`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

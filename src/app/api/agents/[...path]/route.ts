@@ -6,7 +6,8 @@ export async function GET(
 ) {
   const { path } = await params;
   const fullPath = path.join('/');
-  const ultravoxApiUrl = `https://api.ultravox.ai/api/${fullPath}`;
+  // Prepend 'agents' to match Ultravox API structure
+  const ultravoxApiUrl = `https://api.ultravox.ai/api/agents/${fullPath}`;
 
   try {
     const response = await fetch(ultravoxApiUrl, {
@@ -20,7 +21,6 @@ export async function GET(
     const data = await response.json();
     return NextResponse.json(data, { status: response.status });
   } catch (error) {
-    console.error('Error forwarding to Ultravox API:', error);
     return NextResponse.json(
       { 
         message: 'Error forwarding to Ultravox API',
@@ -37,7 +37,8 @@ export async function POST(
 ) {
   const { path } = await params;
   const fullPath = path.join('/');
-  const ultravoxApiUrl = `https://api.ultravox.ai/api/${fullPath}`;
+  // Prepend 'agents' to match Ultravox API structure
+  const ultravoxApiUrl = `https://api.ultravox.ai/api/agents/${fullPath}`;
   const body = await request.json();
 
   try {

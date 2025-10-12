@@ -22,7 +22,6 @@ export async function POST(
     const data = await response.json();
     return NextResponse.json(data, { status: response.status });
   } catch (error) {
-    console.error('Error forwarding to backend API:', error);
     return NextResponse.json(
       { 
         message: 'Error forwarding to backend API',
@@ -53,7 +52,6 @@ export async function GET(
     const data = await response.json();
     return NextResponse.json(data, { status: response.status });
   } catch (error) {
-    console.error('Error forwarding to backend API:', error);
     return NextResponse.json(
       { 
         message: 'Error forwarding to backend API',
