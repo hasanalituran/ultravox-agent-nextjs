@@ -88,12 +88,20 @@ export class UltravoxService {
       const { token } = await authToken.json();
       console.log('Authenticated with backend, received token:', token);
 
+      // Merge custom template context with required fields
+      const defaultTemplateContext = {
+        "agentName": "Mark",
+        "companyName": "Acme Corp", 
+        "callId": "40", // created for demo purposes
+        "agentId": "17",
+        "authorization": `Bearer ${token}`
+      };
+
       const body = {
-        templateContext: templateContext || {
-          "agentName": "Tylinn",
-          "companyName": "Anytime Fitness Randwick", 
-          "callId": "11",
-          "agentId": "17",
+        templateContext: {
+          ...defaultTemplateContext,
+          ...templateContext,
+          // Always ensure authorization is set from token
           "authorization": `Bearer ${token}`
         },
         medium: { "webRtc": {} }

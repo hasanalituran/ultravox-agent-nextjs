@@ -11,7 +11,7 @@ export type CallStatus = 'idle' | 'creating' | 'connecting' | 'connected' | 'end
 interface UseUltravoxCallReturn {
   callStatus: CallStatus;
   error: string | null;
-  createCall: () => void;
+  createCall: (agentName: string, companyName: string) => void;
   endCall: () => Promise<void>;
 }
 
@@ -63,8 +63,14 @@ export function useUltravoxCall(): UseUltravoxCallReturn {
     }
   }, []);
 
-  const { mutate: createCall } = useMutation<JoinUrlResponse, Error>({
-    mutationFn: () => ultravoxService.createCall(),
+  const { mutate: createCallMutation } = useMutation<JoinUrlResponse, Error, { agentName: string; companyName: string }>({
+    mutationFn: ({ agentName, companyName }) => {
+      const templateContext = {
+        agentName,
+        companyName,
+      };
+      return ultravoxService.createCall(templateContext);
+    },
     onMutate: () => {
       setCallStatus('creating');
       setError(null);
@@ -82,6 +88,10 @@ export function useUltravoxCall(): UseUltravoxCallReturn {
       setCallStatus('error');
     },
   });
+
+  const createCall = useCallback((agentName: string, companyName: string) => {
+    createCallMutation({ agentName, companyName });
+  }, [createCallMutation]);
 
   const endCall = useCallback(async () => {
     try {

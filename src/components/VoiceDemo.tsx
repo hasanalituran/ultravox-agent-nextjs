@@ -4,10 +4,15 @@ import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
+import { Input } from '@/components/ui/input'
 import { useUltravoxCall } from '@/hooks/useUltravoxCall'
 
 export default function VoiceDemo() {
   const [isCallStarting, setIsCallStarting] = useState(false)
+  const [agentName, setAgentName] = useState('')
+  const [companyName, setCompanyName] = useState('')
+  const [showValidationError, setShowValidationError] = useState(false)
+  
   const { 
     callStatus, 
     error, 
@@ -18,9 +23,18 @@ export default function VoiceDemo() {
   const isDevelopment = process.env.NODE_ENV === 'development'
 
   const handleStartDemo = async () => {
+    // Validate inputs before starting call
+    if (!agentName.trim() || !companyName.trim()) {
+      setShowValidationError(true)
+      return
+    }
+    
+    // Clear validation error if fields are filled
+    setShowValidationError(false)
+    
     try {
       setIsCallStarting(true)
-      await createCall()
+      await createCall(agentName, companyName)
     } catch (error) {
       console.error('Failed to start demo:', error)
       alert('Failed to start demo. Please check your connection and try again.')
@@ -152,9 +166,93 @@ export default function VoiceDemo() {
                     <div className="text-center space-y-4">
                       <h3 className="text-2xl font-semibold">Ready to Experience Voice AI?</h3>
                       <p className="text-muted-foreground">
-                        Click the microphone button to start a demo conversation with our AI agent. 
-                        You&apos;ll be asked to provide feedback about a recent experience.
+                        Customize your demo experience below, then click the microphone button to start a conversation with our AI agent.
                       </p>
+                      
+                      {/* Customization Inputs */}
+                      <div className="max-w-md mx-auto space-y-4 mt-6 bg-white/50 dark:bg-gray-800/50 p-6 rounded-lg border-2 border-purple-300 dark:border-purple-700 shadow-md">
+                        <div className="text-center mb-4">
+                          <p className="text-sm font-semibold text-purple-600 dark:text-purple-400">
+                            ✨ Customize Your Demo Experience
+                          </p>
+                        </div>
+                        
+                        <div className="space-y-2">
+                          <label htmlFor="agentName" className="block text-base font-semibold text-left text-purple-700 dark:text-purple-300">
+                            🎭 Give Your Agent a Cool Name!
+                          </label>
+                          <Input
+                            id="agentName"
+                            type="text"
+                            value={agentName}
+                            onChange={(e) => {
+                              setAgentName(e.target.value)
+                              if (showValidationError && e.target.value.trim() && companyName.trim()) {
+                                setShowValidationError(false)
+                              }
+                            }}
+                            placeholder="e.g., Sarah, Alex, Jordan..."
+                            className="w-full border-2 focus:border-purple-400 transition-colors"
+                            required
+                          />
+                          <p className="text-xs text-muted-foreground text-left">
+                            Choose a friendly name for your AI assistant
+                          </p>
+                        </div>
+                        
+                        <div className="space-y-2">
+                          <label htmlFor="companyName" className="block text-base font-semibold text-left text-purple-700 dark:text-purple-300">
+                            🏢 What&apos;s Your Company Name?
+                          </label>
+                          <Input
+                            id="companyName"
+                            type="text"
+                            value={companyName}
+                            onChange={(e) => {
+                              setCompanyName(e.target.value)
+                              if (showValidationError && agentName.trim() && e.target.value.trim()) {
+                                setShowValidationError(false)
+                              }
+                            }}
+                            placeholder="e.g., Acme Corp, Joe's Coffee..."
+                            className="w-full border-2 focus:border-purple-400 transition-colors"
+                            required
+                          />
+                          <p className="text-xs text-muted-foreground text-left">
+                            The AI will reference this during the conversation
+                          </p>
+                        </div>
+                        
+                        {(!agentName.trim() || !companyName.trim()) && (
+                          <div className="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-700 rounded-lg p-3 mt-4">
+                            <p className="text-xs text-yellow-800 dark:text-yellow-200 text-center">
+                              💡 Please fill in both fields to start your personalized demo
+                            </p>
+                          </div>
+                        )}
+                      </div>
+                      
+                      {/* Validation Error Warning */}
+                      {showValidationError && (
+                        <div className="max-w-md mx-auto mt-4 bg-red-50 dark:bg-red-900/30 border-2 border-red-400 dark:border-red-600 rounded-lg p-4 animate-shake">
+                          <div className="text-center">
+                            <h4 className="text-sm font-bold text-red-800 dark:text-red-200 mb-1 flex items-center justify-center gap-2">
+                              Required Fields Missing
+                              <span className="text-xl">⚠️</span>
+                            </h4>
+                            <p className="text-sm text-red-700 dark:text-red-300">
+                              Please fill in both the agent name and company name to start your personalized demo experience!
+                            </p>
+                            <button
+                              onClick={() => setShowValidationError(false)}
+                              className="mt-2 text-xs text-red-600 dark:text-red-400 hover:text-red-800 dark:hover:text-red-200 underline font-medium"
+                            >
+                              Dismiss
+                            </button>
+                          </div>
+                        </div>
+                      )}
+                      
                       <div className="grid sm:grid-cols-3 gap-4 mt-6">
                         <div className="text-center p-4 rounded-lg bg-white/50 dark:bg-gray-800/50">
                           <div className="text-2xl mb-2">🎯</div>
