@@ -129,37 +129,6 @@ export default function VoiceDemo() {
             <CardContent className="space-y-8">
               {/* Call Interface */}
               <div className="text-center space-y-6">
-                {/* Main Call Button */}
-                <div className="relative inline-flex items-center justify-center">
-                  <Button
-                    onClick={callStatus === 'connected' ? handleEndCall : handleStartDemo}
-                    disabled={isCallStarting || callStatus === 'creating' || callStatus === 'connecting' || callStatus === 'ended'}
-                    size="lg"
-                    className={`
-                      w-24 h-24 rounded-full text-white font-bold text-2xl transition-all duration-300 shadow-lg hover:scale-105
-                      ${callStatus === 'connected' 
-                        ? 'bg-red-500 hover:bg-red-600 shadow-red-500/30' 
-                        : 'bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 shadow-purple-500/30'
-                      }
-                      ${(isCallStarting || callStatus === 'creating' || callStatus === 'connecting' || callStatus === 'ended') 
-                        ? 'cursor-not-allowed opacity-70 !hover:scale-100' 
-                        : ''
-                      }
-                    `}
-                  >
-                    {callStatus === 'connected' ? (
-                      <span>📞</span>
-                    ) : (
-                      <span>🎤</span>
-                    )}
-                  </Button>
-
-                  {/* Pulsing ring for active call */}
-                  {callStatus === 'connected' && (
-                    <div className="absolute inset-0 rounded-full border-4 border-red-500 animate-ping opacity-30 pointer-events-none"></div>
-                  )}
-                </div>
-
                 {/* Call Instructions */}
                 <div className="max-w-2xl mx-auto">
                   {callStatus === 'idle' && (
@@ -230,6 +199,23 @@ export default function VoiceDemo() {
                             </p>
                           </div>
                         )}
+                        
+                        {/* Start Call Button */}
+                        <div className="relative inline-flex items-center justify-center mt-6">
+                          <Button
+                            onClick={handleStartDemo}
+                            disabled={isCallStarting}
+                            size="lg"
+                            className={`
+                              w-24 h-24 rounded-full text-white font-bold text-2xl transition-all duration-300 shadow-lg hover:scale-105
+                              bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 shadow-purple-500/30
+                              ${isCallStarting ? 'cursor-not-allowed opacity-70 !hover:scale-100' : ''}
+                            `}
+                          >
+                            <span>🎤</span>
+                          </Button>
+                        </div>
+                        <p className="text-sm text-muted-foreground mt-2">Click to start your demo call</p>
                       </div>
                       
                       {/* Validation Error Warning */}
@@ -301,6 +287,21 @@ export default function VoiceDemo() {
                           💡 <strong>Tip:</strong> Speak naturally with the AI agent. The conversation should flow like talking to a real person.
                         </p>
                       </div>
+                      
+                      {/* End Call Button */}
+                      <div className="relative inline-flex items-center justify-center mt-6">
+                        <Button
+                          onClick={handleEndCall}
+                          size="lg"
+                          className="w-24 h-24 rounded-full text-white font-bold text-2xl transition-all duration-300 shadow-lg hover:scale-105 bg-red-500 hover:bg-red-600 shadow-red-500/30"
+                        >
+                          <span>📞</span>
+                        </Button>
+
+                        {/* Pulsing ring for active call */}
+                        <div className="absolute inset-0 rounded-full border-4 border-red-500 animate-ping opacity-30 pointer-events-none"></div>
+                      </div>
+                      <p className="text-sm text-muted-foreground mt-2">Click to end call</p>
                     </div>
                   )}
 
@@ -384,8 +385,6 @@ export default function VoiceDemo() {
                   </div>
                 </div>
               </div>
-
-
             </CardContent>
           </Card>
         </div>
