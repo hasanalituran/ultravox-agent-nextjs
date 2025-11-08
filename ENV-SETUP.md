@@ -21,16 +21,6 @@ BACKEND_API_KEY=your-backend-api-key-here    # Placeholder
 NEXT_PUBLIC_ULTRAVOX_AGENT_ID=1fbf806f-949b-467c-8092-3b85b9f143a5  # Real value (public)
 ```
 
-### `.env.local` (Your Existing File - NOT Committed)
-```bash
-# YOUR REAL API KEYS
-# Never committed to Git
-# Overrides .env values
-
-ULTRAVOX_API_KEY=Kkc5LagY.Mt70qXPbocIyAqeBsHUwIriy3gaprFdq  # 🔒 Real key
-BACKEND_API_KEY=dev-api-key-12345                          # 🔒 Real key
-```
-
 ### `.env.example` (Updated - Committed to Git)
 ```bash
 # Template for new team members
