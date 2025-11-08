@@ -95,7 +95,7 @@ export default function VoiceDemo() {
             Try Our Voice AI Demo
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Experience real-time voice conversations with our AI agent. Click start to begin a demo customer feedback session.
+            Experience real-time voice conversations with our demo AI agent.
           </p>
         </div>
 

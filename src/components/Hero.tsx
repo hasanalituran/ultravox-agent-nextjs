@@ -10,10 +10,10 @@ export default function Hero() {
           {/* Hero Headline */}
           <div className="space-y-4">
             <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-[1.12] md:leading-[1.08] bg-gradient-to-r from-purple-600 via-blue-600 to-cyan-600 bg-clip-text text-transparent pb-2">
-              Voice AI Agents for Interviews, Feedback & Intelligence
+              Voice AI Agents for Intelligent and Adaptive Conversations
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto">
-              Deploy adaptive, on-brand voice agents to run interviews, feedback sessions, qualitative research, discovery, support triage and more—capturing richer intent and turning every conversation into actionable product, service & market insights.
+              Automate customer retention, customer service and continuous feedback collection with intelligent, actionable, adaptive voice conversations. Deploy in minutes and scale across phone, web, and messaging.
             </p>
           </div>
 

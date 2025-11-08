@@ -106,7 +106,7 @@ export default function UseCases() {
             Real-World Applications
           </Badge>
           <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent leading-tight py-1">
-            Built for Your Use Case
+            Tailored for Your Use Case
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Deploy AI voice agents that drive real business outcomes
@@ -176,7 +176,7 @@ export default function UseCases() {
                 </Button>
               </div>
               <p className="text-sm text-muted-foreground mt-4">
-                Don&apos;t see your use case? Our AI agents adapt to your specific needs.
+                Don&apos;t see your use case? Our team can help with your specific needs.
               </p>
             </CardContent>
           </Card>
