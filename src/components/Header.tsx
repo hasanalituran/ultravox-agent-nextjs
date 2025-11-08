@@ -12,9 +12,10 @@ interface HeaderProps {
 export default function Header({ activeSection, setActiveSection, darkMode, toggleTheme }: HeaderProps) {
   const sections = [
     { id: 'hero', label: 'Home' },
-    { id: 'how-it-works', label: 'How It Works' },
-    { id: 'features', label: 'Features' },
+    { id: 'use-cases', label: 'Use Cases' },
     { id: 'voice-demo', label: 'Try Demo' },
+    { id: 'features', label: 'Features' },
+    { id: 'how-it-works', label: 'How It Works' },
     { id: 'contact', label: 'Contact' }
   ]
 

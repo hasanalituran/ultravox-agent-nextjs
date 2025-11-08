@@ -3,9 +3,10 @@
 import { useState, useEffect } from 'react'
 import Header from '@/components/Header'
 import Hero from '@/components/Hero'
-import HowItWorks from '@/components/HowItWorks'
-import Features from '@/components/Features'
+import UseCases from '@/components/UseCases'
 import VoiceDemo from '@/components/VoiceDemo'
+import Features from '@/components/Features'
+import HowItWorks from '@/components/HowItWorks'
 import Contact from '@/components/Contact'
 import Footer from '@/components/Footer'
 
@@ -21,7 +22,7 @@ export default function Home() {
   // Handle scroll spy for navigation
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['hero', 'how-it-works', 'features', 'voice-demo', 'contact']
+      const sections = ['hero', 'use-cases', 'voice-demo', 'features', 'how-it-works', 'contact']
       const scrollPosition = window.scrollY + 100
 
       for (const section of sections) {
@@ -51,9 +52,10 @@ export default function Home() {
       
       <main>
         <Hero />
-        <HowItWorks />
-        <Features />
+        <UseCases />
         <VoiceDemo />
+        <Features />
+        <HowItWorks />
         <Contact />
       </main>
       
